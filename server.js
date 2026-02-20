@@ -46,8 +46,6 @@ app.use((err, req, res, next) => {
     res.status(500).json({ error: err.message || 'Internal Server Error' });
 });
 
-// ── Start Server ──────────────────────────────────────────────
-
 // Configure CORS
 app.use(cors({
   origin: 'https://saaptd.vercel.app', // Allow requests from your Vercel frontend
@@ -58,15 +56,7 @@ app.use(cors({
 
 app.use(express.json()); // To parse JSON request bodies
 
-// Your existing routes
-app.post('/auth/login', (req, res) => {
-  // Login logic here
-  res.json({ message: 'Login successful' });
-});
-
-// ... other routes
-
-const PORT = process.env.PORT || 3000;
+// ── Start Server ──────────────────────────────────────────────
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+    console.log(`✅ Server running on https://railway.com`);
 });
