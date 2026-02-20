@@ -3,7 +3,6 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -48,6 +47,26 @@ app.use((err, req, res, next) => {
 });
 
 // ── Start Server ──────────────────────────────────────────────
+
+// Configure CORS
+app.use(cors({
+  origin: 'https://saaptd.vercel.app', // Allow requests from your Vercel frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
+  credentials: true, // Allow cookies to be sent with requests (if needed for authentication)
+  allowedHeaders: ['Content-Type', 'Authorization'] // Specify allowed headers
+}));
+
+app.use(express.json()); // To parse JSON request bodies
+
+// Your existing routes
+app.post('/auth/login', (req, res) => {
+  // Login logic here
+  res.json({ message: 'Login successful' });
+});
+
+// ... other routes
+
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`✅ Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
