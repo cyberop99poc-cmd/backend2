@@ -7,8 +7,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ── Middleware ────────────────────────────────────────────────
+
 app.use(cors({
-  origin: ["https://frontend2-dainzs-projects.vercel.app/"]
+  origin: [
+    "https://saaptd.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -45,16 +50,6 @@ app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({ error: err.message || 'Internal Server Error' });
 });
-
-// Configure CORS
-app.use(cors({
-  origin: 'https://saaptd.vercel.app', // Allow requests from your Vercel frontend
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed HTTP methods
-  credentials: true, // Allow cookies to be sent with requests (if needed for authentication)
-  allowedHeaders: ['Content-Type', 'Authorization'] // Specify allowed headers
-}));
-
-app.use(express.json()); // To parse JSON request bodies
 
 // ── Start Server ──────────────────────────────────────────────
 app.listen(PORT, () => {
