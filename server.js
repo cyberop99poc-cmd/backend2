@@ -31,14 +31,14 @@ const capaRoutes = require('./routes/capaRoutes');
 const checklistRoutes = require('./routes/checklistRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 
-app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/audit', auditRoutes);
-app.use('/api/evidence', evidenceRoutes);
-app.use('/api/findings', findingRoutes);
-app.use('/api/capa', capaRoutes);
-app.use('/api/checklist', checklistRoutes);
-app.use('/api/categories', categoryRoutes);
+app.use('/auth', authRoutes);
+app.use('/users', userRoutes);
+app.use('/audit', auditRoutes);
+app.use('/evidence', evidenceRoutes);
+app.use('/findings', findingRoutes);
+app.use('/capa', capaRoutes);
+app.use('/checklist', checklistRoutes);
+app.use('/categories', categoryRoutes);
 
 // ── Health Check ──────────────────────────────────────────────
 app.get('/', (req, res) => {
